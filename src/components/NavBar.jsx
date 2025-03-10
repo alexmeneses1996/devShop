@@ -1,6 +1,7 @@
-import { BottomNavigation, BottomNavigationAction } from '@mui/material';
+import { AppBar, BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { Home, Search, ShoppingCart, AccountCircle } from '@mui/icons-material';
+
 
 const navItems = [
   { id: 0, name: 'Home', path: '/home', icon: <Home /> },
@@ -11,6 +12,7 @@ const navItems = [
 
 export default function NavBar() {
   return (
+    <AppBar position="static">
     <BottomNavigation sx={{ position: 'fixed', bottom: 0, width: '100vw', zIndex: 1000, justifyContent:'center' }}>
       {navItems.map((item) => (
         <BottomNavigationAction
@@ -21,5 +23,6 @@ export default function NavBar() {
         />
       ))}
     </BottomNavigation>
+    </AppBar>
   );
 }
