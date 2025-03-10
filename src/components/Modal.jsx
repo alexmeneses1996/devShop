@@ -8,7 +8,7 @@ export default function Modal({ close, content }) {
   return (
     <ModalBackArea onClick={close}>
       <ModalArea onClick={(e) => e.stopPropagation()}>
-        <Title> Login </Title>
+        <Title> Ingresar </Title>
         <BtnClose onClick={close}> X </BtnClose>
         
         {/* Inputs de usuario y contraseña */}
@@ -18,6 +18,7 @@ export default function Modal({ close, content }) {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
+          <br/>
           <Input
             type="password"
             placeholder="Contraseña"
@@ -70,7 +71,8 @@ const ModalArea = styled.div`
 const Title = styled.p` 
   text-align: center;
   font-size: 18px;
-  font-weight: bold;  
+  font-weight: bold;
+  color: #000;
   margin-bottom: 15px;
 `;
 
@@ -108,4 +110,6 @@ const Input = styled.input`
   border-radius: 5px;
   outline: none;
   font-size: 16px;
+  background-color: #d3d3d3;
+  color: #000;
 `;
