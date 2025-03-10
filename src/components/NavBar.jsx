@@ -1,28 +1,38 @@
-import { AppBar, BottomNavigation, BottomNavigationAction } from '@mui/material';
+import { AppBar, BottomNavigation, BottomNavigationAction, Button, IconButton, Toolbar } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import { Home, Search, ShoppingCart, AccountCircle } from '@mui/icons-material';
-
-
-const navItems = [
-  { id: 0, name: 'Home', path: '/home', icon: <Home /> },
-  { id: 1, name: 'Search', path: '/search', icon: <Search /> },
-  { id: 2, name: 'Orders', path: '/orders', icon: <ShoppingCart /> },
-  { id: 3, name: 'Profile', path: '/profile', icon: <AccountCircle /> }
-];
+import { Home, Search, ShoppingCart, AccountCircle, Person } from '@mui/icons-material';
+import Cart from './Cart';
+import { useState } from 'react';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PersonIcon from '@mui/icons-material/Person';
 
 export default function NavBar() {
+
+  const [cartItems, setCartItems] = useState([]);
+  const [cartOpen, setCartOpen] = useState(false);
+
   return (
     <AppBar position="static">
-    <BottomNavigation sx={{ position: 'fixed', bottom: 0, width: '100vw', zIndex: 1000, justifyContent:'center' }}>
-      {navItems.map((item) => (
-        <BottomNavigationAction
-          key={item.id}
-          label={item.name}
-          icon={item.icon}
-          sx={{ '&.active': { color: 'primary.main' } }} // Cambia color al estar activo
-        />
-      ))}
-    </BottomNavigation>
+      <Toolbar>
+        <IconButton edge="start" color="inherit" aria-label="logo">
+          <img src="https://res.cloudinary.com/dqgbna4ni/image/upload/v1741628604/ceai9i4i00s62pmk6jac.png" alt="Logo" style={{ height: 40 }} />
+        </IconButton>
+
+        <Button color="inherit">SHOP</Button>
+        <Button color="inherit">COLLECTION</Button>
+
+
+        <IconButton onClick={() => setCartOpen(!cartOpen)} aria-label="Toggle cart">
+          <ShoppingCartIcon />
+          {cartItems.length > 0 && <span>({cartItems.length})</span>}
+        </IconButton>
+        
+        <IconButton >
+          <PersonIcon />
+        </IconButton>
+
+
+      </Toolbar>
     </AppBar>
   );
 }

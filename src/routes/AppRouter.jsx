@@ -1,26 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import NavBar from '../components/NavBar'
 import Inicio from '../components/Inicio'
-import Cart from '../components/Cart'
 
 
 
 const AppRouter = () => {
-  const [cartItems, setCartItems] = useState([]);
-
-
-
+  
   return (
     <>
-       <Routes>
-         <Route path='/' element={<Inicio />}/>
-        </Routes> 
-        <NavBar />
-        <Cart cartItems={cartItems} setCartItems={setCardItems} />
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<Inicio />} />
+      </Routes>
+
     </>
-)
+  )
 }
 
 export default AppRouter

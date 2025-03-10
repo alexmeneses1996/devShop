@@ -7,7 +7,7 @@ const Inicio = () => {
   const [collection, setCollection] = useState([]);
   // const [selectedSize, setSelectedSize] = useState('');
   useEffect(() => {
-    fetch(``)
+    fetch(`https://apifreshprince.onrender.com/collection`)
       .then(response => response.json())
       .then(data =>
         setCollection(data))
@@ -38,7 +38,7 @@ const Inicio = () => {
       <Box sx={{ padding: '1rem', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
         <Typography variant='h4'>{collection.name}</Typography>
         <Typography variant='h6'>{collection.price}</Typography>
-        <Typography variant='h6'>Size</Typography>
+        <Typography variant='h6'>Sizes:{collection.sizes}</Typography>
         {/* <Box sx={{ display: "flex", justifyContent: "center", marginY: 2 }}>
           <ToggleButtonGroup
             value={selectedSize}
