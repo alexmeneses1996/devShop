@@ -1,115 +1,72 @@
 import React, { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import "../styles/Modal.css"; 
+
+const users = [
+    {
+        id: "1",
+        name: "Admin",
+        email: "admin@freshPrince.com",
+        password: "12345",
+    },
+];
 
 export default function Modal({ close, content }) {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = () => {
+    const user = users.find(
+        (u) => u.email === email && u.password === password
+    );
+
+    if (user) {
+      setError("");
+      alert(`Bienvenido, ${user.name}!`);
+    } else {
+      setError("Correo o contraseña incorrectos.");
+    }
+  };
 
   return (
-    <ModalBackArea onClick={close}>
-      <ModalArea onClick={(e) => e.stopPropagation()}>
-        <Title> Ingresar </Title>
-        <BtnClose onClick={close}> X </BtnClose>
-        
+    <div className="modal-back" onClick={close}>
+      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+        <h1 className="modal-title">Ingresar</h1>
+        <button className="modal-close-btn" onClick={close}>X</button>
+
         {/* Inputs de usuario y contraseña */}
-          <Input
-            type="text"
-            placeholder="Usuario"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <br/>
-          <Input
-            type="password"
-            placeholder="Contraseña"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <input
+          className="modal-input"
+          type="text"
+          placeholder="Usuario"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <br />
+        <input
+          className="modal-input"
+          type="email"
+          placeholder="Correo"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br />
+        <input
+          className="modal-input"
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {error && <p className="modal-error">{error}</p>}
+        
+        <button className="modal-login-btn" onClick={handleLogin}>
+          Ingresar
+        </button>
+        
         {content}
-      </ModalArea>
-    </ModalBackArea>
+      </div>
+    </div>
   );
 }
-
-const started = keyframes`    
-  from {opacity: 0;} 
-  to {opacity: 1;}
-`;
-
-const ModalBackArea = styled.div` 
-  width: 100%;
-  height: 100%;
-  background: #ffffff88;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;  
-  z-index: 3;
-`;
-
-const ModalArea = styled.div`  
-  max-width: 90%;
-  max-height: 90%;
-  padding: 20px;
-  background: #ffffff;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  height: auto;
-  top: 50%;
-  margin: auto;
-  box-sizing: border-box;
-  transform: translateY(-50%);  
-  animation: ${started} 500ms normal ; 
-  box-shadow: 0 0 10px 0px #000000;
-`;
-
-const Title = styled.p` 
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  color: #000;
-  margin-bottom: 15px;
-`;
-
-const BtnClose = styled.button` 
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: #FFF;   
-  background: #FF906D;     
-  font-size: 18px;
-  font-weight: bold;  
-  padding: 5px 10px;
-  border-radius: 5px;
-  outline: none;
-  border: none; 
-  cursor: pointer;   
-  &:hover { 
-    background: #FFF;
-    color: #ff757c;    
-  }
-`;
-
-const InputContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px 0;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-  font-size: 16px;
-  background-color: #d3d3d3;
-  color: #000;
-`;
