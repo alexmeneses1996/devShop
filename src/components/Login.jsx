@@ -33,7 +33,7 @@ const Login = () => {
 
   >
     <form
-        style={{ display: 'flex', flexDirection: 'column' }}
+        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
         onSubmit={handleSubmit}
     >
         <Typography sx={{display: 'flex', alignItems: "center",
@@ -69,7 +69,7 @@ const Login = () => {
                 }
             />
         </FormControl>
-        <Button sx={{ display: 'flex', alignItems: "center",
+        <Button sx={{ width: "10", display: 'flex', alignItems: "center",
                 justifyContent: "center", marginTop: '10px' }}>¿Olvidaste tu contraseña?</Button>
 
         <Button
@@ -93,7 +93,7 @@ const Login = () => {
         </Button>
         <Typography sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>O INGRESA CON</Typography>
         <Facebook Login 
-            style={{ marginLeft: '10px' }}
+            style={{ marginLeft: '10px', }}
             icon={<Facebook />}
             onClick={() => console.log("Login with Facebook")}
             text="Inicia sesión con Facebook"
