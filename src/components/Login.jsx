@@ -1,4 +1,4 @@
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Facebook, Google, Visibility, VisibilityOff } from '@mui/icons-material';
 import { Button, Container, FilledInput, FormControl, IconButton, InputAdornment, InputLabel, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -91,6 +91,20 @@ const Login = () => {
         >
             Ingresar
         </Button>
+        <Typography sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>O INGRESA CON</Typography>
+        <Facebook Login 
+            style={{ marginLeft: '10px' }}
+            icon={<Facebook />}
+            onClick={() => console.log("Login with Facebook")}
+            text="Inicia sesión con Facebook"
+        />
+        <Google Login
+            style={{ marginRight: '10px', right: '10px' }}
+            icon={<Google />}
+            onClick={() => console.log("Login with Google")}
+            text="Inicia sesión con Google"
+        />
+    
         <Button sx={{ display: 'flex', alignItems: "center",
                 justifyContent: "center", marginTop: '10px' }}>Regístrate aquí</Button>
     </form>
