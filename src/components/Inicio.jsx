@@ -39,27 +39,13 @@ const Inicio = () => {
         <Typography variant='h4'>{collection.name}</Typography>
         <Typography variant='h6'>{collection.price}</Typography>
         <Typography variant='h6'>Size</Typography>
-        {/* <Box sx={{ display: "flex", justifyContent: "center", marginY: 2 }}>
-          <ToggleButtonGroup
-            value={selectedSize}
-            exclusive
-            onChange={handleSizeChange}
-            aria-label="Tallas"
-          >
-            {product.sizes.map((size) => (
-              <ToggleButton key={size} value={size} sx={{ marginX: 0.5 }}>
-                {size}
-              </ToggleButton>
-            ))}
-          </ToggleButtonGroup>
-        </Box> */}
-        <select>
-          <option value="small">S</option>
-          <option value="medium">M</option>
-          <option value="large">L</option>
-          <option value="extra-large">XL</option>
-          <option value="double-extra-large">XXL</option>
-        </select>
+        <Box>
+          <Button value="small">S</Button>
+          <Button value="medium">M</Button>
+          <Button value="large">L</Button>
+          <Button value="extra-large">XL</Button>
+          <Button value="extra-extra-large">XXL</Button>
+        </Box>
 
         <Typography variant='h9'>{collection.description}</Typography>
         <Button variant='contained' sx={{ backgroundColor: "#000", color: "#fff", "&:hover": { backgroundColor: "#333" } }}>Add to Cart</Button>
