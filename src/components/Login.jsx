@@ -18,9 +18,10 @@ const Login = () => {
     return (
 
         <Container
+        
             sx={{
-                width: 500, // Tamaño del círculo
-                height: 500,
+                width: 450, // Tamaño del círculo
+                height: 450,
                 backgroundColor: "white",
                 borderRadius: "50%", // Hace que sea un círculo
                 display: "flex",
@@ -29,25 +30,17 @@ const Login = () => {
                 boxShadow: 2, // Agrega una sombra ligera
                 border: "2px solid #ddd", // Borde opcional
             }}
-            // height: 'calc(100vh - 4rem)',
-            //     display: 'flex',
-            //         justifyContent: 'center',
-            //             alignItems: 'center',
-            //                 backgroundColor: '#fff',
-            //                     padding: '2rem',
-            //                         borderRadius: '0.5rem',
-            //                             boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-            //                                 display: 'flex',
+
   >
     <form
         style={{ display: 'flex', flexDirection: 'column' }}
         onSubmit={handleSubmit}
     >
         <Typography sx={{display: 'flex', alignItems: "center",
-                justifyContent: "center" }}>INGRESAR</Typography>
+                justifyContent: "center" }}>INGRESO</Typography>
         <FormControl sx={{ m: 1, width: '25ch' }} variant="filled">
             <TextField
-                label="Email"
+                label="Usuario"
                 id="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
@@ -76,6 +69,8 @@ const Login = () => {
                 }
             />
         </FormControl>
+        <Button sx={{ display: 'flex', alignItems: "center",
+                justifyContent: "center", marginTop: '10px' }}>¿Olvidaste tu contraseña?</Button>
 
         <Button
             type="submit"
@@ -91,11 +86,15 @@ const Login = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 cursor: 'pointer',
+                color: "white"
             }}
         >
             Ingresar
         </Button>
+        <Button sx={{ display: 'flex', alignItems: "center",
+                justifyContent: "center", marginTop: '10px' }}>Regístrate aquí</Button>
     </form>
+
   </Container >
   )
 }
